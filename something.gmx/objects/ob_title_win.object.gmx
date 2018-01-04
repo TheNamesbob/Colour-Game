@@ -31,7 +31,7 @@ option = 0
 max_option = 1
 
 _x[0] = 150
-_x[1] = 250
+_x[1] = 450
 
 _y[0] = 200
 _y[1] = 200 + 30
@@ -75,13 +75,12 @@ opt_txt[1] = "Quit"
 
 draw_self()
 
-//draw arrow
-//draw_sprite(sp_arrow,0,_x[1] - 4, _y[option])
-
 //draw text
 draw_set_font(fn_titlescreen)
 draw_set_valign(fa_middle)
 
+
+//Draw the array of text
 var i
 i = 0
 
@@ -90,10 +89,42 @@ while (i &lt;= 3) {
     i += 1
 }
 
-draw_set_font(fn_titlescreen)
-draw_set_colour(c_black)
+//draw how many restarts happened
+draw_text(_x[1],_y[1],string(global.restarts))
 
-draw_text(_x[1],_y[2],string(global.time_m[1]) + ":" + string(global.time_s[1]))
+
+//Print the best time
+if (global.best_time_s &lt; 10) and (global.best_time_m &lt; 10){
+    draw_text(_x[1],_y[2],string(global.best_time_m) + ":0" + string(global.best_time_s))
+}
+else if (global.best_time_s &gt;= 10) and (global.best_time_m &gt;= 10){
+    draw_text(_x[1],_y[2],string(global.best_time_m) + ":" + string(global.best_time_s))
+}
+else if (global.best_time_s &gt;= 10) and (global.best_time_m &lt; 10){
+    draw_text(_x[1],_y[2],string(global.best_time_m) + ":" + string(global.best_time_s))
+}
+else if (global.best_time_s &lt; 10) and (global.best_time_m &gt;= 10){
+    draw_text(_x[1],_y[2],string(global.best_time_m) + "0:" + string(global.best_time_s))
+}
+
+//Draw the total time 
+    if (global.t_time_s &lt; 10) and (global.t_time_m &lt; 10){
+        draw_text(_x[1],_y[0],string(global.t_time_m) + ":0" + string(global.t_time_s))
+    }
+    else if (global.t_time_s &gt;= 10) and (global.t_time_m &gt;= 10){
+        draw_text(_x[1],_y[0],string(global.t_time_m) + ":" + string(global.t_time_s))
+    }
+    else if (global.t_time_s &gt;= 10) and (global.t_time_m &lt; 10){
+        draw_text(_x[1],_y[0],string(global.t_time_m) + ":" + string(global.t_time_s))
+    }
+    else if (global.t_time_s &lt; 10) and (global.t_time_m &gt;= 10){
+        draw_text(_x[1],_y[0],string(global.t_time_m) + "0:" + string(global.t_time_s))
+    }
+    
+//Draw how many secrets were found
+draw_text(_x[1],_y[3],string(global.secrets) + "/10")
+
+
 
 </string>
           </argument>

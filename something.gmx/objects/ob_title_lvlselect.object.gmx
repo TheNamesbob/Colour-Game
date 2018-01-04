@@ -28,9 +28,10 @@
             <string>///Variables
 
 option = 0
-max_option = 9
+max_option = 10
 
-_x = 150
+_x[0] = 50
+_x[1] = 250
 
 _y[0] = 200
 _y[1] = 200 + 30
@@ -42,6 +43,7 @@ _y[6] = 200 + 180
 _y[7] = 200 + 210
 _y[8] = 200 + 240
 _y[9] = 200 + 270
+_y[10] = 200 + 300
 
 
 
@@ -55,7 +57,7 @@ txt[6] = "Level Seven"
 txt[7] = "Level Eight"
 txt[8] = "Level Nine"
 txt[9] = "Level Ten"
-
+txt[10] = "Level Eleven"
 </string>
           </argument>
         </arguments>
@@ -83,6 +85,7 @@ txt[9] = "Level Ten"
 //if the down arrow is pressed add one to the option variable
 if keyboard_check_pressed(vk_down){
     option += 1
+    
 }
 
 //if the up arrow is pressed subtract one from the option variable
@@ -92,11 +95,11 @@ else if keyboard_check_pressed(vk_up){
 
 // if you are at the top of the list and press up the the arrow goes to the bottom
 if option &lt; 0 {
-option = max_option
+    option = max_option
 }
 //if you are at the bottom of the list then press down go tot the top
 if option &gt; max_option {
-option = 0
+    option = 0
 }
 
 //If you press enter check what option are you on and go to said room
@@ -131,6 +134,10 @@ if (keyboard_check_pressed(vk_enter)){
     else if (option == 9){
         room_goto(lvl_10_p1)
     }
+    else if (option == 10){
+        room_goto(lvl_11_p1)    
+    }
+    
 }
 </string>
           </argument>
@@ -155,23 +162,44 @@ if (keyboard_check_pressed(vk_enter)){
           <argument>
             <kind>1</kind>
             <string>///DRAW STUFF
-
 draw_self()
 
+var i
+i = 0
+var t
+t = 0 
+var q
+q = 0
+
+i = option
+
+if (option &gt;= 8){
+    t = 1
+    i = option - 8
+}
+
 //draw arrow
-draw_sprite(sp_arrow,0,_x - 3, _y[option])
+draw_sprite(sp_arrow,0,_x[t] - 3, _y[i])
 
 //draw text
 draw_set_font(fn_titlescreen)
 draw_set_valign(fa_middle)
 
-var i
 i = 0
+t = 0
 
-while (i &lt;= max_option){
-    draw_text(_x,_y[i],txt[i])
+while (q &lt;= max_option){
+    draw_text(_x[t],_y[i],txt[q])
     i += 1
+    q += 1
+    if (i == 8){
+        i = 0
+        t = 1
+    }
 }
+
+
+
 </string>
           </argument>
         </arguments>
