@@ -30,62 +30,158 @@ if place_meeting(x,y,ob_player){
     //Changing from level 1 to level 2
     if (room == lvl_1_p1){
         room_goto(lvl_2_p1)
-        global.times_s[0] = global.seconds
+        global.time_s[0] = global.seconds
         global.time_m[0] = global.minutes
         global.seconds = 0
         global.minutes = 0
-        
+        global.best_time_s = global.time_s[0]
+        global.best_time_m = global.time_m[0]
     }
     
     //Changing from level 2 to level 3
     else if (room == lvl_2_p1){
         room_goto(lvl_3_p1)
-        global.times_s[1] = global.seconds
+        global.time_s[1] = global.seconds
         global.time_m[1] = global.minutes
         global.seconds = 0
         global.minutes = 0
-        
+        //Compare with the time beforehand
+        if (global.time_m[1] &lt;= global.best_time_m){
+            if (global.time_s[1] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[1]
+                global.best_time_m = global.time_m[1]
+            }
+        }
     }
     
     //Changing from level 3 to level 4
     else if (room == lvl_3_p1){
         room_goto(lvl_4_p1)
+        global.time_s[2] = global.seconds
+        global.time_m[2] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[2] &lt;= global.best_time_m){
+            if (global.time_s[2] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[2]
+                global.best_time_m = global.time_m[2]
+            }
+        }
     }
 
     //Changing from level 4 to level 5
     else if (room == lvl_4_p1){
         room_goto(lvl_5_p1)
+        global.time_s[3] = global.seconds
+        global.time_m[3] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[3] &lt;= global.best_time_m){
+            if (global.time_s[3] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[3]
+                global.best_time_m = global.time_m[3]
+            }
+        }  
     }
     
     //Changing from level 5 to level 6
     else if (room == lvl_5_p1){
         room_goto(lvl_6_p1)
+        global.time_s[4] = global.seconds
+        global.time_m[5] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[4] &lt;= global.best_time_m){
+            if (global.time_s[4] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[4]
+                global.best_time_m = global.time_m[4]
+            }
+        }
     }
 
     //Changing from level 6 to level 7
     else if (room == lvl_6_p1){
         room_goto(lvl_7_p1)
+        global.time_s[5] = global.seconds
+        global.time_m[5] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[5] &lt;= global.best_time_m){
+            if (global.time_s[5] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[5]
+                global.best_time_m = global.time_m[5]
+            }
+        }
     }
     
     //Changing from level 7 to level 8
     else if (room == lvl_7_p1){
         room_goto(lvl_8_p1)
+        global.time_s[6] = global.seconds
+        global.time_m[6] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[6] &lt;= global.best_time_m){
+            if (global.time_s[6] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[6]
+                global.best_time_m = global.time_m[6]
+            }
+        }
     }
     
     //Changing from level 8 to level 9
     else if (room == lvl_8_p1){
         room_goto(lvl_9_p1)
+        global.time_s[7] = global.seconds
+        global.time_m[7] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[7] &lt;= global.best_time_m){
+            if (global.time_s[7] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[7]
+                global.best_time_m = global.time_m[7]
+            }
+        }
     }
     
     //Changing from level 9 to level 10
     else if (room == lvl_9_p1){
         room_goto(lvl_10_p1)
-    }
-    else if (room == lvl_10_p1){
-        room_goto(title_win)
-        global.count_up = false
+        global.time_s[8] = global.seconds
+        global.time_m[8] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[8] &lt;= global.best_time_m){
+            if (global.time_s[8] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[8]
+                global.best_time_m = global.time_m[8]
+            }
+        }
     }
     
+    //Moving to the last room
+    else if (room == lvl_10_p1){
+        room_goto(title_win)
+        global.time_s[9] = global.seconds
+        global.time_m[9] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[9] &lt;= global.best_time_m){
+            if (global.time_s[9] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[9]
+                global.best_time_m = global.time_m[9]
+            }
+        }
+        global.count_up = false
+    }
 }
 </string>
           </argument>

@@ -25,10 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.seconds = 0
+            <string>///Global Variables
+
+global.seconds = 0
 global.minutes = 0
 
+global.t_time_s = 0
+global.t_time_m = 0
+
+global.time_s[0] = 0
+global.time_m[0] = 0
+
 global.count_up = false
+
+global.restarts = 0
+
+global.secrets = 0
 </string>
           </argument>
         </arguments>
@@ -53,12 +65,19 @@ global.count_up = false
             <kind>1</kind>
             <string>if (global.count_up == true){
     global.seconds += 1/room_speed 
+    global.t_time_s += 1/room_speed
 }
 
 if (global.seconds &lt; 60) and (global.seconds &gt; 59.9){
     global.seconds = 0
     global.minutes += 1
 }
+
+if(global.t_time_s &lt; 60) and (global.t_time_s &gt; 59.9){
+    global.t_time_s = 0
+    global.t_time_m += 1
+}
+
 
 </string>
           </argument>
@@ -82,20 +101,55 @@ if (global.seconds &lt; 60) and (global.seconds &gt; 59.9){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the time
+            <string>///DRAW GUI SHIT
+//Draw the time
+if (global.count_up == true){
+    draw_set_font(fn_titlescreen)
+    draw_set_colour(c_black)
+    
+    if (global.seconds &lt; 10) and (global.minutes &lt; 10){
+        draw_text(900,32,string(global.minutes) + ":0" + string(global.seconds))
+    }
+    else if (global.seconds &gt;= 10) and (global.minutes &gt;= 10){
+        draw_text(900,32,string(global.minutes) + ":" + string(global.seconds))
+    }
+    else if (global.seconds &gt;= 10) and (global.minutes &lt; 10){
+        draw_text(900,32,string(global.minutes) + ":" + string(global.seconds))
+    }
+    else if (global.seconds &lt; 10) and (global.minutes &gt;= 10){
+        draw_text(900,32,string(global.minutes) + "0:" + string(global.seconds))
+    }
+    
+    //Draw a green block
+    draw_sprite(sp_wall_green,0,50,30)
 
-draw_set_font(fn_titlescreen)
-draw_set_colour(c_black)
+    //Draw a Z on top of the block
+    draw_set_font(fn_GUI)
+    draw_text(37,28,"Z")
+    
+    
+    //Draw a white block
+    draw_sprite(sp_wall_white,0,100,30)
+    
+    //Draw a X on top of the block
+    draw_set_font(fn_GUI)
+    draw_text(87,28,"X")
+    
+    //Draw a blue block
+    draw_sprite(sp_wall_blue,0,150,30)
+    
+    //Draw a C on top of the block
+    draw_set_font(fn_GUI)
+    draw_text(137,28,"C")
 
-if (global.seconds &lt; 10) and (global.minutes &lt; 10){
-    draw_text(900,32,string(global.minutes) + ":0" + string(global.seconds))
+    
+    
 }
-else if (global.seconds &gt;= 10) and (global.minutes &gt;= 10){
-    draw_text(900,32,string(global.minutes) + ":" + string(global.seconds))
-}
-else if (global.seconds &gt;= 10) and (global.minutes &lt; 10){
-    draw_text(900,32,string(global.minutes) + ":" + string(global.seconds))
-}
+
+
+
+
+
 </string>
           </argument>
         </arguments>

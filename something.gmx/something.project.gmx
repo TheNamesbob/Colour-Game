@@ -10,12 +10,12 @@
       <sprite>sprites\sp_char</sprite>
     </sprites>
     <sprites name="walls">
-      <sprite>sprites\sp_wall_brick</sprite>
       <sprite>sprites\sp_wall_purple</sprite>
       <sprite>sprites\sp_wall_green</sprite>
       <sprite>sprites\sp_wall_blue</sprite>
       <sprite>sprites\sp_wall_white</sprite>
       <sprite>sprites\sp_wall_yellow</sprite>
+      <sprite>sprites\sp_wall_red</sprite>
     </sprites>
     <sprites name="powerups">
       <sprite>sprites\sp_pow_jump</sprite>
@@ -38,16 +38,17 @@
   <paths name="paths"/>
   <fonts name="fonts">
     <font>fonts\fn_titlescreen</font>
+    <font>fonts\fn_GUI</font>
   </fonts>
   <objects name="objects">
     <objects name="walls">
-      <object>objects\ob_wall</object>
       <object>objects\ob_wall_blue</object>
       <object>objects\ob_wall_green</object>
       <object>objects\ob_wall_white</object>
       <object>objects\ob_wall_purple</object>
       <object>objects\ob_wall_fakepurple</object>
       <object>objects\ob_wall_yellow</object>
+      <object>objects\ob_wall_red</object>
     </objects>
     <objects name="powerups">
       <object>objects\ob_pow_jump</object>
@@ -65,8 +66,8 @@
     </objects>
     <objects name="players">
       <object>objects\ob_player</object>
-      <object>objects\ob_player_opposite</object>
       <object>objects\ob_player_1</object>
+      <object>objects\ob_player_opposite</object>
       <object>objects\ob_player_2</object>
     </objects>
     <object>objects\ob_foundsecret</object>
@@ -89,6 +90,7 @@
       <room>rooms\lvl_8_p1</room>
       <room>rooms\lvl_9_p1</room>
       <room>rooms\lvl_10_p1</room>
+      <room>rooms\lvl_11_p1</room>
       <room>rooms\lvl_1_p2</room>
     </rooms>
   </rooms>
