@@ -33,6 +33,7 @@
       <sprite>sprites\sp_winning</sprite>
     </sprites>
     <sprite>sprites\sp_foundsecret</sprite>
+    <sprite>sprites\sp_uparrow</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -49,6 +50,13 @@
       <object>objects\ob_wall_fakepurple</object>
       <object>objects\ob_wall_yellow</object>
       <object>objects\ob_wall_red</object>
+    </objects>
+    <objects name="moving walls">
+      <object>objects\ob_mwall_purple</object>
+      <object>objects\ob_mwall_red</object>
+      <object>objects\ob_mwall_green</object>
+      <object>objects\ob_mwall_white</object>
+      <object>objects\ob_mwall_blue</object>
     </objects>
     <objects name="powerups">
       <object>objects\ob_pow_jump</object>
@@ -72,6 +80,7 @@
     </objects>
     <object>objects\ob_foundsecret</object>
     <object>objects\ob_countup_controller</object>
+    <object>objects\ob_part_test</object>
   </objects>
   <rooms name="rooms">
     <rooms name="TitleScreens">
@@ -91,7 +100,7 @@
       <room>rooms\lvl_9_p1</room>
       <room>rooms\lvl_10_p1</room>
       <room>rooms\lvl_11_p1</room>
-      <room>rooms\lvl_1_p2</room>
+      <room>rooms\lvl_12_p1</room>
     </rooms>
   </rooms>
   <help>

@@ -168,7 +168,7 @@ if place_meeting(x,y,ob_player){
     
     //Moving to the last room
     else if (room == lvl_10_p1){
-        room_goto(title_win)
+        room_goto(lvl_11_p1)
         global.time_s[9] = global.seconds
         global.time_m[9] = global.minutes
         global.seconds = 0
@@ -178,6 +178,35 @@ if place_meeting(x,y,ob_player){
             if (global.time_s[9] &lt;= global.best_time_s){
                 global.best_time_s = global.time_s[9]
                 global.best_time_m = global.time_m[9]
+            }
+        }
+    }
+    
+    else if (room == lvl_11_p1){
+        room_goto(lvl_12_p1)
+        global.time_s[10] = global.seconds
+        global.time_m[10] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[10] &lt;= global.best_time_m){
+            if (global.time_s[10] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[10]
+                global.best_time_m = global.time_m[10]
+            }
+        }
+    }
+        else if (room == lvl_12_p1){
+        room_goto(title_win)
+        global.time_s[11] = global.seconds
+        global.time_m[11] = global.minutes
+        global.seconds = 0
+        global.minutes = 0
+        //Compare with the time beforehand
+        if (global.time_m[11] &lt;= global.best_time_m){
+            if (global.time_s[11] &lt;= global.best_time_s){
+                global.best_time_s = global.time_s[11]
+                global.best_time_m = global.time_m[11]
             }
         }
         global.count_up = false

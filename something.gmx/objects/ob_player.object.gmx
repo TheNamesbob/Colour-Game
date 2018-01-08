@@ -44,6 +44,7 @@ depth = -10
 
 //no animations
 image_speed = 0;
+
 </string>
           </argument>
         </arguments>
@@ -67,7 +68,6 @@ image_speed = 0;
           <argument>
             <kind>1</kind>
             <string>///Movement code
-
         //Start the timer
         global.count_up = true
 
@@ -257,11 +257,31 @@ else if (place_meeting(x,y + vsp,ob_wall_purple)){
 y += vsp
 
                     //Hitting red blocks
-if place_meeting(x,y,ob_wall_red){
+if place_meeting(x,y,ob_wall_red) or place_meeting(x,y,ob_mwall_red){
 // Add one to the total amount of restarts then restart the room   
     global.restarts += 1
     room_restart()
 }
+
+                        //Getting crushed by a moving block                        
+                    //Crushed by a green moving block
+if place_meeting(x,y - 1,ob_mwall_green) and (place_meeting(x,y + 1,ob_wall_purple) or place_meeting(x,y + 1,ob_wall_green)) and (image_index == 0){
+    global.restarts += 1
+    room_restart()
+}
+
+else if place_meeting(x,y - 1,ob_mwall_white) and (place_meeting(x,y + 1,ob_wall_purple) or place_meeting(x,y + 1,ob_wall_white)) and (image_index == 1){
+    global.restarts += 1
+    room_restart()
+}
+else if place_meeting(x,y - 1,ob_mwall_blue) and (place_meeting(x,y + 1,ob_wall_purple) or place_meeting(x,y + 1,ob_wall_blue)) and (image_index == 2){
+    global.restarts += 1
+    room_restart()
+}
+
+
+
+
 
 
 
@@ -288,17 +308,20 @@ if place_meeting(x,y,ob_wall_red){
             <string>///Powerups and Changing colours
 
                         //Changing colours
-//changing to green
-if keyboard_check(ord("Z")) and place_empty(x,y){
+                    //changing to green
+if keyboard_check(ord("Z")) and place_empty(x,y) and (image_index != 0){
     image_index = 0
+    instance_create(x,y,ob_part_test)
     }
-//changing to white
-else if keyboard_check(ord("X")) and place_empty(x,y){
+                    //changing to white
+else if keyboard_check(ord("X")) and place_empty(x,y) and (image_index != 1){
     image_index = 1
+    instance_create(x,y,ob_part_test)
     }
-//changing to blue
-else if keyboard_check(ord("C")) and place_empty(x,y){
+                    //changing to blue
+else if keyboard_check(ord("C")) and place_empty(x,y) and (image_index != 2){
     image_index = 2
+    instance_create(x,y,ob_part_test)
     }
     
                         //PowerUps
@@ -307,6 +330,7 @@ if place_meeting(x,y,ob_pow_jump){
     jumps += 1
     wall_jump += 1
 }
+
 </string>
           </argument>
         </arguments>

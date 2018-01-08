@@ -89,6 +89,7 @@ if option &gt; max_option {
 if keyboard_check_pressed(vk_enter){
     if (option == 0){
         room_goto(lvl_1_p1)
+        global.count_up = true
     }
     else if (option == 1){
         room_goto(lvl_1_p2)

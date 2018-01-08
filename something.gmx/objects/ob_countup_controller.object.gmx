@@ -41,6 +41,10 @@ global.count_up = false
 global.restarts = 0
 
 global.secrets = 0
+
+//Moving arrows
+move = 0
+
 </string>
           </argument>
         </arguments>
@@ -63,7 +67,8 @@ global.secrets = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.count_up == true){
+            <string>//Time stuff
+if (global.count_up == true){
     global.seconds += 1/room_speed 
     global.t_time_s += 1/room_speed
 }
@@ -77,6 +82,18 @@ if(global.t_time_s &lt; 60) and (global.t_time_s &gt; 59.9){
     global.t_time_s = 0
     global.t_time_m += 1
 }
+
+//Making the gui arrows move
+
+if (move == 0){
+    i = 1
+}
+if (move == 10){
+    i = -1
+}
+move += i
+
+
 
 
 </string>
@@ -141,15 +158,18 @@ if (global.count_up == true){
     //Draw a C on top of the block
     draw_set_font(fn_GUI)
     draw_text(137,28,"C")
+    
+    //In Level 1 point out how to change colours
 
-    
-    
+    if (room == lvl_1_p1){
+        draw_sprite(sp_uparrow,0,50,66 + move)
+        draw_sprite(sp_uparrow,0,100,66 + move)
+        draw_sprite(sp_uparrow,0,150,66+ move)
+        
+        
+        
+    }
 }
-
-
-
-
-
 </string>
           </argument>
         </arguments>
